@@ -1,0 +1,65 @@
+<?php
+if (isset($_POST['login'])) { $login = $_POST['login']; if ($login == '') { unset($login);} } //заносим введенный пользователем логин в переменную $login, если он пустой, то уничтожаем переменную
+
+if (isset($_POST['email'])) { $email = $_POST['email']; if ($email == '') { unset($email);} } //заносим введенный пользователем e-mail, если он пустой, то уничтожаем переменную
+
+if (isset($login) and isset($email)) {//если существуют необходимые переменные  
+	
+	include ("bd.php");// файл bd.php должен быть в той же папке, что и все остальные, если это не так, то просто измените путь 
+	
+	$result = mysql_query("SELECT id FROM users WHERE login='$login' AND email='$email' AND activation='1'",$db);//такой ли у пользователя е-мейл
+	$myrow = mysql_fetch_array($result);
+	if (empty($myrow['id']) or $myrow['id']=='') {
+		//если активированного пользователя с таким логином и е-mail адресом нет
+		exit ("Пользователя с таким e-mail адресом не обнаружено ни в одной базе ЦРУ :) <a href='index.php'>Главная страница</a>");
+		}
+	//если пользователь с таким логином и е-мейлом найден, то необходимо сгенерировать для него случайный пароль, обновить его в базе и отправить на е-мейл
+	$datenow = date('YmdHis');//извлекаем дату 
+	$new_password = md5($datenow);// шифруем дату
+	$new_password = substr($new_password, 2, 6);	//извлекаем из шифра 6 символов начиная со второго. Это и будет наш случайный пароль. Далее запишем его в базу, зашифровав точно так же, как и обычно.
+	
+$new_password_sh = strrev(md5($new_password))."b3p6f";//зашифровали
+mysql_query("UPDATE users SET password='$new_password_sh' WHERE login='$login'",$db);// обновили в базе
+	//формируем сообщение
+	
+	$message = "Здравствуйте, ".$login."! Мы сгененриоровали для Вас пароль, теперь Вы сможете войти на сайт smartdiary.ru, используя его. После входа желательно его сменить. Пароль:\n".$new_password;//текст сообщения
+	mail($email, "Восстановление пароля", $message, "Content-type:text/plane; Charset=windows-1251\r\n");//отправляем сообщение
+	
+	echo "<html><head><meta http-equiv='Refresh' content='5; URL=index.php'></head><body>На Ваш e-mail отправлено письмо с паролем. Вы будете перемещены через 5 сек. Если не хотите ждать, то <a href='index.php'>нажмите сюда.</a></body></html>";//перенаправляем пользователя
+	}
+
+
+else {//если данные еще не введены
+echo '
+<html>
+<head>
+<title>Smart Diary | Забыли пароль?</title>
+<link rel="icon" type="image/ico" href="favicon.ico" />
+ <link href="css/reset.css" media="all" rel="stylesheet" type="text/css" />
+    <link href="css/front.css" media="all" rel="stylesheet" type="text/css" />
+
+</head>
+<body class="front">
+<div class="top-bar"></div><!--End top-bar -->
+<div id="container">
+
+    <div id="header">
+        <h1 class="site-logo"><a href="index.php" class="pngfix">Smart Diary</a></h1>
+       
+    </div><!--End header -->
+ <center>
+
+ <div id="primary">
+ <div class="feature-contentli">
+<h1><a href="#">Забыли пароль?</a></h1>
+<form action="#" method="post">
+ <label><p class="subhead">Введите Ваш логин:<br> <input type="text" name="login"><br></label>
+ <label><p class="subhead">Введите Ваш E-mail: <br><input type="text" name="email"><br></p></label>
+<input type="submit" name="submit" value="Отправить">
+</form>
+</center>
+</body>
+</html>';
+}
+
+?>

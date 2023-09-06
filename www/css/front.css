@@ -1,0 +1,474 @@
+﻿
+#payt4 {display: none;}
+[for="payt4"] {
+  display: inline-block;
+  padding: 7px;
+  border-radius: 100px;
+  background: rgba(0, 0, 0, .1);
+  box-shadow: 0 1px 2px 0 rgba(0, 0, 0, .4) inset, 0 1px 1px 0 rgba(255, 255, 255, .1);
+  text-shadow: 0 1px rgba(0, 0, 0, .5);
+  cursor: pointer;
+}
+[for="payt4"]:before, [for="payt4"]:after {
+  display: inline-block;
+  padding: 5px 20px;
+}
+[for="payt4"]:before {
+  content: "Выделение";
+  border-radius: 100px 0 0 100px;
+  background: rgba(0, 0, 0, .3) linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0));
+  color: rgba(0,0,0,.4);
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .5) inset, 0 1px 0 rgba(255, 255, 255, .4);
+}
+[for="payt4"]:after {
+  content: "Д.З.";
+  border-radius: 0 100px 100px 0;
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
+  box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.2), 0 1px 2px 0 rgba(0,0,0,.5);
+}
+#payt4:checked ~ [for="payt4"]:after {
+  background: rgba(0, 0, 0, .3) linear-gradient(rgba(0,0,0,.3), rgba(0,0,0,0));
+  box-shadow: 0 1px 1px rgba(0, 0, 0, .5) inset, 0 1px 0 rgba(255, 255, 255, .4);
+  color: rgba(0,0,0,.4);
+}
+#payt4:checked ~ [for="payt4"]:before {
+  box-shadow: inset 0 1px 1px 0 rgba(255,255,255,.2), 0 1px 2px 0 rgba(0,0,0,.5);
+  background: linear-gradient(rgba(0,0,0,0), rgba(0,0,0,.3));
+  color: inherit;
+}
+#payt4:checked ~#link a {
+  pointer-events: auto;
+  }
+  #payt4:checked ~ #link:after, #payt4:checked ~ #payt4:before {
+  content: none;
+}
+#link {
+  position: relative;
+}
+#link a {
+  pointer-events: none;
+}
+#link:hover:before {
+  display: block;
+  content: "Просмотр доступен только при ☑";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, calc(-100% - 10px));
+  border-radius: 3px;
+  padding: 10px;
+  background: #f7f7f7;
+  box-shadow: 0 0 2px;
+}
+#link:hover:after {
+  display: block;
+  content: "";
+  position: absolute;
+  top: 0; left: 50%;
+  transform: translate(-50%, -50%);
+  border-style: solid;
+  border-width: 10px;
+  border-color: #f7f7f7 transparent transparent transparent;
+}
+
+}
+
+
+* 
+{
+    margin: 0;
+    padding: 0;
+}
+body
+{
+    font-family: arial,sans-serif;
+}
+#Schedule
+{
+    margin: 30px;
+    border: solid 1px Silver;
+    padding: 10px;
+    display: inline-block;
+}
+#Schedule table
+{
+    
+}
+#Schedule table thead tr td div
+{
+    color: #666;
+    text-align: center;
+    overflow: hidden;
+    background-color: White;
+    margin: 1px;
+    cursor: pointer;
+    padding: 8px 0;
+    font-size: 9pt;
+    font-weight: bold;
+    overflow: hidden;
+    border: solid 1px silver;
+    width: 80px;
+    background: url(images/grad.png) left bottom repeat-x;
+}
+#Schedule table thead tr td div:hover
+{
+    color: #555;
+    border-color: #bfbfbf;
+    background: url(images/gradRev.png) left bottom repeat-x;
+}
+#Schedule table thead tr td.hovered div
+{
+    color: #444;
+}
+#Schedule table thead tr td div.selected, #Schedule table thead tr td div.selected:hover
+{
+    background: url(images/ggrad.png) left -2px repeat-x;
+    border-color: #b7c4df;
+    color: #444;
+}
+#Schedule table tbody tr td div
+{
+    border: solid 1px #ddd;
+    height: 25px;
+    cursor: pointer;
+    margin: 1px;
+}
+#Schedule table tbody tr td.hovered div
+{
+    
+    border-color: #ccc;
+    background: url(images/ggrad2.png) left bottom repeat-x;
+}
+#Schedule table tbody tr td div.selected, #Schedule table tbody tr td div.selected:hover
+{
+    background: url(images/ggrad.png) left -2px repeat-x;
+    border-color: #b7c4df;
+}
+
+
+#Schedule table tbody tr td div:hover
+{
+    border-color: #ccc;
+    background: url(images/ggrad2.png) left bottom repeat-x;
+}
+#Schedule table tbody tr td div.selected:hover
+{
+
+}
+#Schedule table tbody tr td:first-child div
+{
+    padding: 1px 3px;
+    vertical-align: top;
+    font-size: 9pt;
+    cursor: default;
+    text-align: right;
+    margin: 0;
+    border: solid 1px White;
+    font-weight: bold;
+    color: #777;
+}
+
+#Schedule table tbody tr.hovered td:first-child div
+{
+    color: #333;
+    border-color: White;
+    background: none;
+
+}
+#Schedule table tbody tr td:first-child div:hover
+{
+    color: #777;
+}
+.ResultsHolder input
+{
+    margin: 10px 40px;
+}
+.ResultsHolder #output
+{
+    font-family: Courier New;
+    font-size: 10px;
+    padding: 20px;
+}
+/* Layout Specific Styles ==============================    */  
+
+body {background: url(images/body.jpg) repeat;}
+
+.clear-block {display: block; clear: both;}
+
+.top-bar {
+    background: url(images/top-bar.jpg) repeat top center; 
+    height: 9px;
+}
+
+#container {
+    width: 960px;
+    margin: 0 auto;
+    background: url(images/glow.jpg) top center no-repeat;
+    padding-top: 25px;
+}
+
+p.view-more {margin-top: 10px;}
+
+p.view-more a { 
+    text-decoration: none;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    background: url(images/read-more.jpg) no-repeat center;
+    color: #b3b496;
+    padding: 7px 22px;
+}
+
+p.view-more a:hover {color: #E8D4AF;}
+
+hr {
+    background: none;
+    border-top: 1px dotted #5b5a4e;
+    border-left: none;
+    border-right: none;
+    border-bottom: 1px dotted #8a8571;
+    margin: 15px 0;
+}
+
+/* Header ==============================    */  
+
+#header {margin-bottom: 20px;}
+
+h1.site-logo a {
+    background: url(images/logo.png) no-repeat;
+    display:block;
+    height:0 !important;
+    overflow:hidden !important;
+    padding-top:94px;
+    left: 170px;
+    width:231px; 
+    margin: 0 auto 10px auto; 
+}
+h1.site-logo a {
+    
+    display:block;
+    height:0 !important;
+    overflow:hidden !important;
+    padding-top:94px;
+    left: 170px;
+    width:231px; 
+    margin: 0 auto 10px auto; 
+}
+
+
+/* Navigation ==============================    */  
+
+#navigation {
+    width: 750px;
+    height: 47px;
+    background-image: url(images/navigation.jpg);
+    background-repeat: repeat;
+    background-attachment: fixed;
+}
+
+#navigation li {
+    float: left;
+    padding-top:1px;
+    padding-left:30px;
+}
+ #navigation ul {
+    
+     }
+#navigation a {
+    color: #e8d4af;
+    text-decoration: none;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    height: 27px;
+    width: 90px;
+    display: block;
+    text-align: center;
+    padding-top: 5px;
+}        
+#navigation a:hover{background: url(images/navigation-hover.jpg)}                  
+
+
+/*Primary ==============================    */
+
+/*This makes the page degrade gracefully without javascript   */
+.scroller #fade {
+    height: 261px;    
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+    overflow: hidden;
+}
+
+.scroller .innerfade {
+    height: 261px;    
+    float: left;
+    margin-top: 5px;
+    margin-right: 20px;
+    overflow: visible !important; 
+}
+.feature-content {
+float: right;
+    width: 450px;
+}
+.feature-contentli {
+padding-top:50px;
+margin: 0 auto 10px auto;
+    width: 500px;
+}
+
+#primary h3 {
+    color: #b3b496;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 10px 0;
+    font-weight: normal;
+}
+
+#primary h1 a {
+    font-weight: normal;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 50px;
+    color: #a2ccd0;
+    text-decoration: none;
+}
+
+#primary h1 a:hover {color: #badee1;}
+
+#primary p.subhead {
+    color: #BEBEBE;
+    font-size: 16px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    margin: 5px 0 15px 0;
+    line-height: 20px;
+}
+
+#primary p {
+    color: #f4e6cc;
+    font-size: 11px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    line-height: 15px;
+}
+
+/*Bottom Container ==============================    */
+#bottom-container {
+    background: url(images/bottom.jpg) repeat-x;
+    margin-top: 30px;
+    border-bottom: 1px dotted #8a8571; 
+}
+
+/*Secondary ==============================    */  
+
+#secondary .inside {padding: 30px;}
+
+#secondary {
+    float: left; 
+    width: 50%;
+}
+
+#secondary h3 {
+    color: #b3b496;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 10px 0 15px 0;
+    font-weight: normal;
+}
+
+#secondary .column {
+    float: left;
+    width: 50%;
+}
+
+#secondary img {
+    float: left;
+    border: 1px solid #545348;
+    margin-right: 5px;
+}
+
+#secondary h4 a {
+    text-decoration: none;
+    color: #a2ccd0;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+    font-size: 15px;
+    font-weight: normal;
+}
+
+#secondary h4 a:hover {color: #badee1;}
+
+#secondary p {
+    color: #f4e6cc;
+    font-size: 11px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    line-height: 15px;
+}
+
+#secondary .item {
+    clear: both;    
+    margin-bottom: 15px;
+}
+
+/*Tertiary ==============================    */  
+
+#tertiary .inside {padding: 30px;}
+
+#tertiary {
+    float: right;
+    width: 50%;
+ }
+
+#tertiary h3 {
+    color: #b3b496;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 10px 0 15px 0;
+    font-weight: normal;
+}
+
+#tertiary h2 a {
+    text-decoration: none;
+    color: #a2ccd0;
+    font-family: Tahoma, Arial, Helvetica, sans-serif; 
+    font-size: 24px;
+    font-weight: normal;
+}
+
+#tertiary h2 a:hover {color: #badee1;}
+
+#tertiary p {
+    color: #f4e6cc;
+    font-size: 11px;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    line-height: 15px;
+}
+
+#tertiary p.view-more {margin-top: 20px;}
+
+/*Footer ==============================    */
+
+#footer p {
+    padding: 10px 0;
+    color: #b3b496;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+}
+.feature-content {
+float: right;
+    width: 450px;
+}
+#footer h3 {
+    color: #b3b496;
+    font-family: Tahoma, Arial, Helvetica, sans-serif;
+    font-size: 10px;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    margin: 10px 0;
+    font-weight: normal;
